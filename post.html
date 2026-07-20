@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鏂囩珷 - AI 宸ュ叿瀹炴祴</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">馃 AI 宸ュ叿瀹炴祴</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">棣栭〉</a></li>
+                    <li><a href="posts.html">鏂囩珷</a></li>
+                    <li><a href="about.html">鍏充簬</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section>
+        <div class="container" id="post-container">
+            <a href="posts.html" class="back-btn">鈫?杩斿洖鏂囩珷鍒楄〃</a>
+            <div class="post-detail" id="post-detail">
+                <p style="color:#999;">鍔犺浇涓?..</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>漏 2026 AI 宸ュ叿瀹炴祴 路 鐢?OpenClaw AI Agent 椹卞姩 鉁?/p>
+        </div>
+    </footer>
+
+    <script src="js/posts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get('id'));
+            const post = posts.find(p => p.id === id);
+            const container = document.getElementById('post-detail');
+
+            if (!post) {
+                container.innerHTML = '<p style="color:#999;text-align:center;padding:40px;">鏂囩珷涓嶅瓨鍦ㄦ垨宸插垹闄ゃ€?/p>';
+                return;
+            }
+
+            document.title = post.title + ' - AI 宸ュ叿瀹炴祴';
+
+            container.innerHTML = `
+                <h1>${post.title}</h1>
+                <div class="post-meta">
+                    <span>${post.date}</span> 路 
+                    <span style="color:#2563eb;font-weight:600;">${post.category}</span>
+                </div>
+                <div class="post-body">
+                    ${post.content}
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
