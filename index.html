@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -192,6 +192,16 @@
 <script>
 const posts = [
     {
+        "id": 6,
+        "title": "Cursor + Claude Code：AI 编程工具实测，写代码到底能快多少？",
+        "category": "AI 工具实测",
+        "date": "2026-07-24",
+        "excerpt": "Cursor 和 Claude Code 是今年最火的 AI 编程工具。我用一个真实项目做了对比测试——从零到部署一个完整的博客后台，看看 AI 编程到底靠不靠谱。",
+        "image": "",
+        "tags": ["Cursor", "Claude Code", "AI编程", "实测"],
+        "content": "..."
+    },
+    {
         "id": 5,
         "title": "AI 视频生成到底能不能用？5 款工具横向实测",
         "category": "AI 工具实测",
@@ -246,6 +256,15 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+        {
+            "id": 6,
+            "title": "Cursor + Claude Code：AI 编程工具实测，写代码到底能快多少？",
+            "category": "AI 工具实测",
+            "date": "2026-07-24",
+            "tags": ["Cursor", "Claude Code", "AI编程", "实测"],
+            "excerpt": "Cursor 和 Claude Code 是今年最火的 AI 编程工具。我用一个真实项目做了对比测试——从零到部署一个完整的博客后台，看看 AI 编程到底靠不靠谱。",
+            "content": `<h2>AI 编程进入\"真能用\"阶段了</h2><p>去年 AI 编程还是\"写个 hello world 还行，复杂项目就崩\"的水平。但今年 Cursor 和 Claude Code 的出现，彻底改变了局面。我花了一个周末，用同一个需求——搭建一个带数据库的博客后台——测试了 3 款主流 AI 编程工具。</p><h2>参测工具</h2><ul><li><strong>Cursor</strong> — 基于 VS Code 的 AI IDE，内置 Claude/GPT</li><li><strong>Claude Code (CLI)</strong> — Anthropic 官方出的 AI 终端编程工具</li><li><strong>GitHub Copilot (Agent Mode)</strong> — 传统补全升级版</li></ul><h2>测试项目：一个博客后台</h2><p>需求：用 Next.js + SQLite 搭一个博客后台，包含文章 CRUD、标签管理、Markdown 编辑器。</p><h3>Cursor ★★★★★</h3><p>赢家。它的 Composer 模式（⌘+I）可以直接对话式写代码，说\"帮我加一个文章搜索功能\"，它自己找到文件、改代码、甚至创建新组件。全项目上下文理解做得最好——A 文件改了一个函数名，B 文件的引用它会自动更新。从零到跑起来，花了约 2 小时。</p><h3>Claude Code ★★★★☆</h3><p>终端里用自然语言交互，体验很新奇。最惊艳的是它会自己读文档、查错误日志、提 fix 方案。适合开发者使用——你需要懂一些命令行操作。写代码质量很高，但 UI 类任务（CSS 调样式）不如 Cursor 顺手。耗时约 2.5 小时。</p><h3>GitHub Copilot Agent ★★★☆</h3><p>Copilot 在 VS Code 里直接用，上手门槛最低。但 Agent 模式的多文件编辑能力明显弱于 Cursor——经常需要手动告诉它哪些文件需要改。补全质量稳定，但\"全自动写项目\"还差口气。耗时约 4 小时。</p><h2>关键结论</h2><ul><li><strong>新手推荐：</strong>Cursor。界面友好、上下文理解强，几乎不需要懂代码也能把项目搭起来。</li><li><strong>开发者推荐：</strong>Claude Code。代码质量最高，适合重构和调试复杂逻辑。</li><li><strong>小建议：</strong>别让 AI 一次性写太多代码，边写边验证。AI 写的代码 8 成能用，剩下的 2 成调试起来可能是最花时间的。</li></ul><blockquote>一句话：2026 年，不会用 AI 编程就像 2010 年不会用 Stack Overflow。不是替代你写代码，是让你写得更快。</blockquote><p style="margin-top:24px;font-size:0.9em;color:#888;">实测日期：2026年7月 · 所有测试使用工具最新付费版本</p>`
+        },
         {
             "id": 5,
             "title": "AI 视频生成到底能不能用？5 款工具横向实测",
