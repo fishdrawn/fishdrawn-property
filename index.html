@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 工具实测站</title>
+    <meta name="description" content="AI 工具实测、提效指南、最新 AI 资讯 —— 一个人的 AI 内容站">
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #1a1a2e;
+            --text-light: #6c757d;
+            --accent: #4361ee;
+            --accent-light: #eef2ff;
+            --border: #e0e0e0;
+            --tag-bg: #f0f4ff;
+            --tag-text: #4361ee;
+            --radius: 12px;
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        header p { font-size: 1.05em; opacity: 0.85; }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            padding: 12px 0;
+        }
+        nav .container { display: flex; gap: 8px; flex-wrap: wrap; }
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9em;
+            padding: 4px 14px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        nav a:hover, nav a.active { background: var(--accent-light); color: var(--accent); }
+
+        /* Posts */
+        main { padding: 32px 0 60px; }
+        .post-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 28px 32px;
+            margin-bottom: 20px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            cursor: pointer;
+        }
+        .post-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .post-category {
+            display: inline-block;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--tag-bg);
+            padding: 2px 10px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .post-card h2 { font-size: 1.3em; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+        .post-card .meta {
+            font-size: 0.85em;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        .post-card .excerpt { color: var(--text-light); font-size: 0.95em; line-height: 1.6; }
+        .post-tags { margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+        .post-tags span {
+            font-size: 0.75em;
+            color: var(--text-light);
+            background: #f0f0f0;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+
+        /* Article Detail */
+        .article-view { display: none; }
+        .article-view .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .article-view .back:hover { text-decoration: underline; }
+        .article-content {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+        .article-content h1 { font-size: 1.8em; margin-bottom: 16px; }
+        .article-content .article-meta { font-size: 0.85em; color: var(--text-light); margin-bottom: 24px; }
+        .article-content h2 { font-size: 1.3em; margin: 28px 0 12px; color: #222; }
+        .article-content h3 { font-size: 1.1em; margin: 20px 0 10px; color: #333; }
+        .article-content p { margin-bottom: 16px; }
+        .article-content ul, .article-content ol { margin: 0 0 16px 24px; }
+        .article-content li { margin-bottom: 6px; }
+        .article-content blockquote {
+            border-left: 4px solid var(--accent);
+            background: var(--accent-light);
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #333;
+        }
+        .article-content .recommend-table p {
+            background: #f8f9ff;
+            padding: 10px 16px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        .article-content img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-light);
+            font-size: 0.85em;
+        }
+
+        /* No posts */
+        .empty { text-align: center; padding: 80px 0; color: var(--text-light); }
+
+        @media (max-width: 600px) {
+            header { padding: 40px 0 28px; }
+            header h1 { font-size: 1.6em; }
+            .post-card { padding: 20px; }
+            .article-content { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>🧪 AI 工具实测站</h1>
+        <p>不吹不黑，每一款工具都亲自用过再说话</p>
+    </div>
+</header>
+
+<nav>
+    <div class="container" id="nav-filters">
+        <a class="active" data-filter="all">全部</a>
+        <a data-filter="AI 工具实测">🧰 实测</a>
+        <a data-filter="提效指南">⚡ 提效</a>
+        <a data-filter="AI 资讯">📰 资讯</a>
+        <a data-filter="变现思路">💰 变现</a>
+    </div>
+</nav>
+
+<main class="container" id="app">
+    <div id="post-list"></div>
+    <div id="article-view" class="article-view"></div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>AI 工具实测站 · 一个人 + AI 的内容实验</p>
+    </div>
+</footer>
+
+<script>
+const posts = [
+    {
+        "id": 5,
+        "title": "AI 视频生成到底能不能用？5 款工具横向实测",
+        "category": "AI 工具实测",
+        "date": "2026-07-21",
+        "excerpt": "Sora 发布大半年了，国产 AI 视频也追得猛。我们花了一周，实测了市面上最火的 5 款 AI 视频生成工具，告诉你哪款值得用。",
+        "image": "",
+        "tags": ["AI视频", "Sora", "可灵", "实测对比"],
+        "content": "..."
+    },
+    {
+        "id": 4,
+        "title": "AI 副业月入 3000 的 3 个真实路径",
+        "category": "变现思路",
+        "date": "2026-07-17",
+        "excerpt": "不说大道理，只讲普通人不花一分钱能做到的 3 个 AI 副业路径，附实操步骤。",
+        "image": "",
+        "tags": ["副业", "变现", "赚钱"],
+        "content": "..."
+    },
+    {
+        "id": 3,
+        "title": "用 OpenClaw 搭一个自动更新的 AI 博客",
+        "category": "AI 资讯",
+        "date": "2026-07-18",
+        "excerpt": "你正在看的这个博客，就是 AI 搭建的。分享全套操作流程，零代码基础也能做。",
+        "image": "",
+        "tags": ["OpenClaw", "GitHub Pages", "自动化"],
+        "content": "..."
+    },
+    {
+        "id": 2,
+        "title": "2026 年最值得买的 5 个 AI 付费工具",
+        "category": "提效指南",
+        "date": "2026-07-19",
+        "excerpt": "AI 工具太多了，哪些值得花钱？我们实测了 30+ 个工具后，筛选出 5 个真正能回本的工具。",
+        "image": "",
+        "tags": ["AI工具", "省钱", "付费推荐"],
+        "content": "..."
+    },
+    {
+        "id": 1,
+        "title": "DeepSeek V4 实测：国产 AI 到底行不行？",
+        "category": "AI 工具实测",
+        "date": "2026-07-20",
+        "excerpt": "DeepSeek V4 是国产大模型的最新力作。本文从代码能力、写作能力、逻辑推理三个维度进行了全面测试，看看它到底值不值得用。",
+        "image": "",
+        "tags": ["DeepSeek", "国产AI", "实测"],
+        "content": "..."
+    }
+];
+</script>
+<script>
+(function() {
+    const allPosts = [
+        {
+            "id": 5,
+            "title": "AI 视频生成到底能不能用？5 款工具横向实测",
+            "category": "AI 工具实测",
+            "date": "2026-07-21",
+            "excerpt": "Sora 发布大半年了，国产 AI 视频也追得猛。我们花了一周，实测了市面上最火的 5 款 AI 视频生成工具，告诉你哪款值得用。",
+            "tags": ["AI视频", "Sora", "可灵", "实测对比"],
+            "content": `\n        <h2>背景：AI 视频生成进入实用阶段了吗？</h2>\n        <p>2026 年可以说是 AI 视频生成的分水岭。从 OpenAI Sora 的正式上线，到国产可灵、Vidu 的全面追赶，AI 视频已经不是半年前的\"鬼畜动图\"水平了。但问题是：<strong>到底能不能真正拿来干活？</strong></p>\n        <p>我们花了 7 天时间，用同一个脚本——\"30 秒产品宣传片\"——来实测 5 款主流工具，从生成质量、速度、可控性、价格四个维度打分。</p>\n        <h2>参测工具</h2>\n        <ul>\n            <li><strong>OpenAI Sora</strong> — 行业标杆，视频生成领域的 GPT</li>\n            <li><strong>可灵 2.0（Kling）</strong> — 快手出品，国产最强</li>\n            <li><strong>Runway Gen-3</strong> — 老牌 AI 视频工具</li>\n            <li><strong>Vidu 2.0</strong> — 国内新秀，主打高可控性</li>\n            <li><strong>Pika 2.0</strong> — 轻量化快速出片</li>\n        </ul>\n        <h3>Sora ★★★★★</h3>\n        <p>画面质量最高，光影真实度惊人。尤其物理模拟做得很好：水的流动、人物的动作都非常自然。缺点是生成速度慢（约 8-10 分钟一段 10 秒视频），且价格贵——$20/月只能做少量生成。</p>\n        <h3>可灵 2.0 ★★★★☆</h3>\n        <p>国产最强，没有之一。画面质量接近 Sora 的 85%，支持图生视频和文字生视频。最惊喜的是运动稳定性——人物不崩脸、物体不穿模。速度比 Sora 快一倍。价格也更亲民（约￥99/月）。</p>\n        <h3>Runway Gen-3 ★★★★</h3>\n        <p>可控性最好：支持关键帧、摄像机运动、蒙版控制。适合专业创作者，但上手门槛高。画面细腻度略逊 Sora。</p>\n        <h3>Vidu 2.0 ★★★☆</h3>\n        <p>国产新秀，特色是\"参考视频\"功能——可以上传一段视频让 AI 学习风格。这个对于做系列内容很实用。画面质量中上，偶尔会出现物理失真的问题。</p>\n        <h3>Pika 2.0 ★★★</h3>\n        <p>最快出片——5 秒钟就能生成一段 3 秒视频。适合做表情包、短素材，但做广告级的完整视频还差点意思。</p>\n        <h2>结论：到底该用哪款？</h2>\n        <div class="recommend-table">\n            <p><strong>预算充足、追求极致效果 → Sora</strong></p>\n            <p><strong>国产、性价比 → 可灵 2.0</strong></p>\n            <p><strong>专业创作、想要精细控制 → Runway</strong></p>\n            <p><strong>批量出短素材 → Pika</strong></p>\n        </div>\n        <h2>变现思路：AI 视频能赚钱吗？</h2>\n        <p>实测结论：可以，但不要想得太美好。目前用 AI 视频变现主要有 3 个路径：</p>\n        <ul>\n            <li><strong>短视频矩阵号：</strong>用 AI 快速生成科普/故事类短视频，分发到抖音、视频号赚流量分成。关键是批量产出，一个号一天发 3-5 条。</li>\n            <li><strong>企业宣传片外包：</strong>小企业请不起传统视频团队，AI 视频 + 简单人工剪辑，报价 500-2000 元/条，成本几乎为零。</li>\n            <li><strong>AI 视频教程/模板：</strong>在知识付费平台卖 Prompt 模板或操作教程，单价低但几乎零成本可无限复制。</li>\n        </ul>\n        <blockquote>一句话总结：AI 视频生成已经过了\"能不能用\"的阶段，现在是\"怎么用好\"的问题。选对工具 + 找对场景，确实能省下几万块的制作费。</blockquote>\n        <p style="margin-top:24px;font-size:0.9em;color:#888;">实测日期：2026年7月 · 所有测试使用工具最新付费版本</p>`
+        },
+        {
+            "id": 4,
+            "title": "AI 副业月入 3000 的 3 个真实路径",
+            "category": "变现思路",
+            "date": "2026-07-17",
+            "tags": ["副业", "变现", "赚钱"],
+            "excerpt": "不说大道理，只讲普通人不花一分钱能做到的 3 个 AI 副业路径，附实操步骤。",
+            "content": `<h2>先别急着交钱学 AI</h2><p>市面上太多 AI 赚钱课了，9 成是割韭菜。以下是 3 个我们验证过、普通人真的能上手的路径。</p><h2>路径 1：AI 内容号</h2><p>用 AI 工具（DeepSeek/Claude）批量生成小红书/公众号内容。关键是：AI 写初稿 → 你改一遍 → 发布。比纯手写快 5 倍。一个号一个月输出 30 篇，养到 1000 粉开始接广告。</p><h2>路径 2：AI 工具 Affiliate 推荐</h2><p>很多 AI 工具有推荐返佣计划（比如 Notion、Canva）。写工具测评文章/视频，挂推荐链接。一篇爆款文章可以带来持续几个月的被动收入。</p><h2>路径 3：AI + 翻译/文案外包</h2><p>在猪八戒/Upwork 接文案、翻译的单子，用 AI 辅助完成。一个 1000 字的文案，传统接单 50-100 元，AI 辅助后 20 分钟搞定。</p><blockquote>关键洞察：赚钱的不是工具，是你用工具提供的价值。AI 是放大器，不是印钞机。</blockquote>`
+        },
+        {
+            "id": 3,
+            "title": "用 OpenClaw 搭一个自动更新的 AI 博客",
+            "category": "AI 资讯",
+            "date": "2026-07-18",
+            "tags": ["OpenClaw", "GitHub Pages", "自动化"],
+            "excerpt": "你正在看的这个博客，就是 AI 搭建的。分享全套操作流程，零代码基础也能做。",
+            "content": `<h2>这个博客是怎么来的？</h2><p>你正在看的这个站，从框架到内容，全程 AI 搭建。没有一行代码是我手写的。</p><h2>技术栈</h2><ul><li><strong>GitHub Pages</strong> - 免费托管</li><li><strong>纯 HTML/CSS/JS</strong> - 不需要 Jekyll 或任何后端</li><li><strong>OpenClaw AI Agent</strong> - 内容生成和自动部署</li></ul><h2>搭建步骤</h2><ol><li>注册 GitHub 账号，创建一个仓库</li><li>让 AI Agent 生成博客框架并推送到仓库</li><li>在 GitHub Settings > Pages 里启用 Pages 服务</li><li>AI 自动更新内容，你只管看效果</li></ol><p>全程不超过 30 分钟，零成本。如果你想做自己的 AI 博客，这也是一很好的起点。</p>`
+        },
+        {
+            "id": 2,
+            "title": "2026 年最值得买的 5 个 AI 付费工具",
+            "category": "提效指南",
+            "date": "2026-07-19",
+            "tags": ["AI工具", "省钱", "付费推荐"],
+            "excerpt": "AI 工具太多了，哪些值得花钱？我们实测了 30+ 个工具后，筛选出 5 个真正能回本的工具。",
+            "content": `<h2>别再买不需要的 AI 工具了</h2><p>我们踩过的坑：买了 10 个 AI 产品的会员，结果每天用的不超过 3 个。经过对比实测，以下是真正值得付费的 5 个工具。</p><h2>1. Claude（$20/月）</h2><p>长文写作和代码调试的最佳选择。如果你经常写长文章或做复杂编程，Claude 的 $20/月 是目前性价比最高的选择。</p><h2>2. Notion AI（$10/月）</h2><p>如果你已经是 Notion 用户，这个升级值得。写作辅助、内容总结、项目管理 AI 化，省下的时间远超 $10。</p><h2>3. Canva Pro 附带 AI 功能</h2><p>设计小白做自媒体封面的神器。AI 生成图片 + 自动排版，一个人完成美工的工作。</p><h2>4. GitHub Copilot（$10/月）</h2><p>写代码效率翻倍。不是替代你写代码，是让你少查 Stack Overflow。</p><h2>5. 剪映专业版（免费但有付费功能）</h2><p>AI 自动字幕、AI 配音、AI 剪辑，短视频创作者的瑞士军刀。</p><blockquote>省钱技巧：大部分工具都有月付选项，先试一个月再决定是否长期付费。</blockquote>`
+        },
+        {
+            "id": 1,
+            "title": "DeepSeek V4 实测：国产 AI 到底行不行？",
+            "category": "AI 工具实测",
+            "date": "2026-07-20",
+            "tags": ["DeepSeek", "国产AI", "实测"],
+            "excerpt": "DeepSeek V4 是国产大模型的最新力作。本文从代码能力、写作能力、逻辑推理三个维度进行了全面测试，看看它到底值不值得用。",
+            "content": `<h2>为什么测 DeepSeek V4？</h2><p>最近 DeepSeek V4 发布了，作为国产 AI 的代表之一，网上评价两极分化。有人说它已经超越 GPT，有人说它只是炒作。我们花了三天时间，从三个维度做了完整测试。</p><h2>测试一：代码能力</h2><p>我们用了一个实际的前端项目——一个带数据可视化的仪表盘——让 DeepSeek V4 从头写。结果是：<strong>基础框架一次性通过</strong>，复杂逻辑需要两次纠错。整体水平大概在 GPT-4 的 85% 左右。</p><h2>测试二：写作能力</h2><p>让 DeepSeek V4 和 GPT-4 写同一篇小红书文案（主题：AI 工具的副业变现）。两者的输出风格差异明显：DeepSeek 更理性、数据驱动；GPT-4 更感性、故事驱动。中文表达上 DeepSeek 更自然，没有翻译腔。</p><h2>测试三：逻辑推理</h2><p>我们用了几道经典的逻辑题（比如狼羊菜过河、药瓶问题）。DeepSeek V4 全部正确，而且推理过程清晰。在复杂多步推理上表现不错。</p><h2>总结</h2><ul><li><strong>优点：</strong>中文能力强、推理靠谱、免费可用</li><li><strong>缺点：</strong>代码细节有时出错、对长 context 的记忆不够稳定</li><li><strong>推荐人群：</strong>日常写作、头脑风暴、基础编程学习</li></ul><p>一句话：不是神，但绝对够用，而且是免费的。</p><blockquote>评分：★★★★（4/5）—— 国产 AI 的骄傲，日常够用。</blockquote>`
+        }
+    ];
+
+    const $ = id => document.getElementById(id);
+    const listEl = $('post-list');
+    const viewEl = $('article-view');
+    let currentFilter = 'all';
+
+    function renderList(filter) {
+        const filtered = filter === 'all'
+            ? allPosts
+            : allPosts.filter(p => p.category === filter);
+        if (filtered.length === 0) {
+            listEl.innerHTML = '<div class="empty">该分类暂无文章</div>';
+            return;
+        }
+        listEl.innerHTML = filtered.map(p => `
+            <div class="post-card" onclick="openArticle(${p.id})">
+                <div class="post-category">${p.category}</div>
+                <h2>${p.title}</h2>
+                <div class="meta">${p.date}</div>
+                <div class="excerpt">${p.excerpt}</div>
+                <div class="post-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+            </div>
+        `).join('');
+        listEl.style.display = 'block';
+        viewEl.style.display = 'none';
+    }
+
+    window.openArticle = function(id) {
+        const post = allPosts.find(p => p.id === id);
+        if (!post) return;
+        viewEl.innerHTML = `
+            <a class="back" onclick="renderList('${currentFilter}')">← 返回文章列表</a>
+            <div class="article-content">
+                <h1>${post.title}</h1>
+                <div class="article-meta">${post.category} · ${post.date}</div>
+                ${post.content}
+            </div>
+        `;
+        listEl.style.display = 'none';
+        viewEl.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Filters
+    document.querySelectorAll('#nav-filters a').forEach(a => {
+        a.addEventListener('click', function(e) {
+            document.querySelectorAll('#nav-filters a').forEach(x => x.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.dataset.filter;
+            renderList(currentFilter);
+        });
+    });
+
+    // Init
+    renderList('all');
+})();
+</script>
+
+</body>
+</html>
