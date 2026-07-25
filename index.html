@@ -192,6 +192,17 @@
 <script>
 const posts = [
     {
+        "id": 7,
+        "title": "AI 工作流自动化：用 n8n 搭建 5 个生产力工作流",
+        "category": "提效指南",
+        "date": "2026-07-25",
+        "excerpt": "手动重复操作太浪费时间？n8n 这个开源自动化工具，搭配 AI 节点可以实现真正的零代码自动化。本文手把手教你搭建 5 个每天都能用的工作流。",
+        "image": "",
+        "tags": ["n8n", "自动化", "工作流", "提效"],
+        "content": "..."
+    },
+
+    {
         "id": 6,
         "title": "Cursor + Claude Code：AI 编程工具实测，写代码到底能快多少？",
         "category": "AI 工具实测",
@@ -256,6 +267,16 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+        {
+            "id": 7,
+            "title": "AI 工作流自动化：用 n8n 搭建 5 个生产力工作流",
+            "category": "提效指南",
+            "date": "2026-07-25",
+            "tags": ["n8n", "自动化", "工作流", "提效"],
+            "excerpt": "手动重复操作太浪费时间？n8n 这个开源自动化工具，搭配 AI 节点可以实现真正的零代码自动化。本文手把手教你搭建 5 个每天都能用的工作流。",
+            "content": `<h2>为什么要用 n8n？</h2><p>你可能每天在做大量重复操作：转文件格式、发通知、整理数据、回复邮件。如果这些都能自动完成，一周至少能省出 5-10 小时。</p><p>n8n 是一个开源的工作流自动化平台，和 Zapier/Make 类似，但优势很明显：<strong>自托管、免费、可本地部署、支持 AI 节点</strong>。2026 年 n8n 已经成为个人开发者和小团队的首选自动化工具。</p><h2>工作流 1：AI 日报自动生成与推送</h2><p><strong>需求：</strong>每天早上自动浏览你关注的几个信息源，生成一份日报推送到微信或钉钉。</p><p><strong>搭建步骤：</strong></p><ol><li>用 RSS Feed 节点订阅你关注的信息源</li><li>用 HTTP Request 节点抓取文章内容</li><li>接入 Claude/GPT 节点，让 AI 总结每篇文章的核心观点</li><li>用 HTML 模板节点拼接成日报格式</li><li>通过 Webhook 或钉钉机器人推送到你的手机</li></ol><p>全程约 30 分钟配置好，之后每天自动运行。再也不用早上刷一堆信息流了。</p><h2>工作流 2：AI 自动翻译 + 格式化文档</h2><p><strong>需求：</strong>把英文技术文档批量翻译成中文，保留 Markdown 格式。</p><p><strong>搭建：</strong>用 Read File 节点读取本地 Markdown 文件 → 用 Split Data 节点按段落拆分（避免一次输入太多文本）→ AI 节点逐段翻译（设置 system prompt 要求保留格式和代码块）→ Merge 节点合并 → Write File 写出。</p><p>实测效果：一份 5000 字的英文技术文档，AI 翻译 + 人工校对只需 15 分钟，原本纯手动要 2 小时以上。</p><h2>工作流 3：社交媒体自动发布矩阵</h2><p><strong>需求：</strong>一篇内容同时发布到公众号、知乎、小红书、Twitter。</p><p><strong>搭建：</strong>用 Form Trigger 节点创建发布表单 → 把原文传给 AI 节点，让 AI 自动改写适配各平台风格的版本（小红书要活泼加表情包、知乎要详尽、Twitter 要简洁）→ 通过各平台的 API 节点自动发布。</p><p>关键技巧：在 prompt 里写清楚各平台的风格要求。实测 AI 改写后的多平台版本，用户完全看不出是同一篇文章改的。</p><h2>工作流 4：智能邮件分类与自动回复</h2><p><strong>需求：</strong>自动分类邮件，重要邮件通知你，常见咨询自动回复。</p><p><strong>搭建：</strong>用 IMAP 节点监听收件箱 → AI 节点判断邮件类别（紧急/普通/垃圾/自动回复类）→ Switch 节点分流：紧急的发微信通知你、自动回复类的由 AI 生成回复草稿、垃圾邮件直接归档。</p><p>这个工作流对做独立开发和自由职业特别有用——再也不用被邮件轰炸打乱工作节奏了。</p><h2>工作流 5：AI 知识库自动构建</h2><p><strong>需求：</strong>把你散落在各处的笔记、书签、文档自动汇总成一个可搜索的知识库。</p><p><strong>搭建：</strong>用 Schedule Trigger 每周运行一次 → 读取你 Notion/Obsidian/浏览器书签 → AI 节点自动提取关键词、打标签、写摘要 → 写入一个向量数据库（如 Qdrant 或 Supabase） → 在前端搭一个 AI 搜索界面。</p><p>坚持跑 1 个月后，你会拥有一个真正属于自己的 AI 知识库——搜什么都比 Google 好用，因为里面的内容都是你精选过的。</p><h2>n8n 部署建议</h2><ul><li><strong>最省钱：</strong>在自己服务器上用 Docker 部署 n8n — `docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n`</li><li><strong>最省事：</strong>n8n Cloud 付费版（$20/月），免维护</li><li><strong>进阶：</strong>n8n + Docker Compose + PostgreSQL，生产级配置</li></ul><blockquote>一句话总结：每天找出一个你重复做了 3 次以上的操作，把它自动化。一个月后，你会发现之前花在手动操作上的时间简直浪费生命。</blockquote><p style="margin-top:24px;font-size:0.9em;color:#888;">实测日期：2026年7月 · 使用 n8n 1.80+ 版本</p>`
+        },
+
         {
             "id": 6,
             "title": "Cursor + Claude Code：AI 编程工具实测，写代码到底能快多少？",
