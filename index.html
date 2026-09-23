@@ -193,6 +193,17 @@
 const posts = [
 
     {
+        "id": 22,
+        "title": "AI 大模型同周集体降价：GPT-6 Sol/Luna、Claude Opus 5.5 谁更划算？普通人版省钱指南",
+        "category": "提效指南",
+        "date": "2026-09-23",
+        "excerpt": "一周之内，OpenAI 发布 GPT-6 Sol 和 Luna、API 价格直接砍半；Anthropic 上线 Claude Opus 5.5、任务成本降 40%；Grok 4.7 价格只有旗舰一半。模型越强越便宜，普通人该怎么选、怎么用才真的省钱？这份指南说清 4 件事。",
+        "image": "",
+        "tags": ["GPT-6","Claude Opus 5.5","大模型降价","AI 选型","API 成本","提效"],
+        "content": "..."
+    },
+
+    {
         "id": 21,
         "title": "Kimi Code 桌面端实测：AI 编程 Agent 搬进本地，这 5 个功能最值得用",
         "category": "AI 工具实测",
@@ -418,6 +429,37 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+
+        {
+            "id": 22,
+            "title": "AI 大模型同周集体降价：GPT-6 Sol/Luna、Claude Opus 5.5 谁更划算？普通人版省钱指南",
+            "category": "提效指南",
+            "date": "2026-09-23",
+            "tags": ["GPT-6","Claude Opus 5.5","大模型降价","AI 选型","API 成本","提效"],
+            "excerpt": "一周之内，OpenAI 发布 GPT-6 Sol 和 Luna、API 价格直接砍半；Anthropic 上线 Claude Opus 5.5、任务成本降 40%；Grok 4.7 价格只有旗舰一半。模型越强越便宜，普通人该怎么选、怎么用才真的省钱？这份指南说清 4 件事。",
+            "content": `<h2>一周之内，前沿模型集体降价</h2>
+<p>9 月 22 日这一天有点热闹：Anthropic 先上线 Claude Opus 5.5，约两小时后 OpenAI 发布 GPT-6 的两位新成员 GPT-6 Sol 和 GPT-6 Luna；同一周，xAI 的 Grok 4.7 也把价格压到旗舰的一半。三家不约而同做同一件事：<strong>把"最强"之下的那一档模型，做得又快又便宜</strong>。</p>
+<p>对普通人来说，这不是围观巨头打架的八卦，而是一个实打实的省钱窗口。</p>
+
+<h2>GPT-6 Sol / Luna：价格砍半，单任务成本最低不到竞品一成</h2>
+<p>OpenAI 这次的定位很清楚：GPT-6 Astra 仍是最强旗舰，Sol 和 Luna 则是"够用且便宜"的版本。官方称新模型的 API 价格比 GPT-5.6 促销价再降 50%。</p>
+<p>更关键的是单任务成本。OpenAI 公布的数据里，GPT-6 Sol 在 xhigh 强度下每任务成本只有 Claude Opus 5 的 9%；Luna 在同一测试 high 强度下，成本比前代降低 58%。换句话说，能力接近旗舰，账单却小了一个数量级。</p>
+<p>Sol 和 Luna 已进入 ChatGPT Work 和 Codex，Plus、Pro、Business、Enterprise、Edu 用户可直接用；免费和 Go 用户能在桌面应用里用到 Luna。API 标识分别是 gpt-6-sol 与 gpt-6-luna。</p>
+
+<h2>Claude Opus 5.5：任务成本降四成，长任务是真卖点</h2>
+<p>Anthropic 的更新偏"省钱 + 耐干"。官方称 Opus 5.5 在默认设置下，典型任务成本比 Opus 5 降低 40%，输出速度提升超过 30%；每百万输入、输出 Token 分别收费 4 美元和 20 美元，较上一代下调 20%，缓存读取价格降 60%。</p>
+<p>它最亮眼的是长任务能力：有早期测试者用不到一天完成 68 万行代码的迁移；把负载均衡软件 HAProxy 从 C 语言改写为 Rust，Opus 5.5 用时 9.5 小时，成本比 Fable 5.1 低 51%。如果你要做的是"跑很久、步骤很多"的活儿，这类模型正合适。</p>
+
+<h2>普通人怎么接住这波红利：4 件事</h2>
+<p><strong>1. 别再用旗舰跑日常活。</strong>翻译、改写、整理资料、写日报这类任务，用便宜档的模型就够了，成本能省一半以上。</p>
+<p><strong>2. 按任务难度分层用。</strong>简单活交给小模型，难题、长任务、要严谨的活再上旗舰。混着用，比全程旗舰划算得多。</p>
+<p><strong>3. 长任务优先挑"耐跑"的。</strong>代码迁移、批量审查、多步骤自动化，别只看单次回答多聪明，要看它能不能连续干几小时不崩。</p>
+<p><strong>4. 关注缓存和订阅额度。</strong>这次缓存读取普遍降价——Opus 5.5 降 60%，GPT-6 也改进了提示缓存。固定重复的提示词、系统设定，缓存能再省一笔；订阅额度提升的部分也要用起来。</p>
+
+<h2>选谁？一句话</h2>
+<blockquote>要生态和通用性，看 GPT-6 Sol/Luna；要长任务和编程稳定性，看 Claude Opus 5.5；预算极紧又想跑长任务，可以关注 Grok 4.7。真正的省钱不在于"选最便宜的模型"，而在于<strong>让每个任务都用对它那一档的模型</strong>。</blockquote>
+<p style="margin-top:24px;font-size:0.9em;color:#888;">信息来源：AIbase 2026-09-22（OpenAI 发布 GPT-6 Sol/Luna、Anthropic 上线 Claude Opus 5.5、Grok 4.7 上线）</p>`
+        },
 
         {
             "id": 21,
