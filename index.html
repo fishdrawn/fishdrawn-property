@@ -193,6 +193,17 @@
 const posts = [
 
     {
+        "id": 28,
+        "title": "10 月第一周 AI 要闻：Gemini 4 Argon 登场、Anthropic 冲刺 2 万亿美元 IPO、AI 编程插件爆出零点击漏洞",
+        "category": "AI 资讯",
+        "date": "2026-10-05",
+        "excerpt": "十月的第一周，AI 圈同时发生了三件方向相反的事：模型继续往上冲，资本继续往里砸，安全问题却密集爆雷。挑 5 条对普通人有用的，逐条说清楚该怎么看、该怎么办。",
+        "image": "",
+        "tags": ["AI资讯","Gemini 4 Argon","Anthropic","AI编程","Qwen","AI安全"],
+        "content": "..."
+    },
+
+    {
         "id": 27,
         "title": "AI 5 天做出《辐射：纽约》却被紧急叫停：普通人用 AI 做小游戏，4 个能落地的变现方向",
         "category": "变现思路",
@@ -484,6 +495,41 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+
+        {
+            "id": 28,
+            "title": "10 月第一周 AI 要闻：Gemini 4 Argon 登场、Anthropic 冲刺 2 万亿美元 IPO、AI 编程插件爆出零点击漏洞",
+            "category": "AI 资讯",
+            "date": "2026-10-05",
+            "tags": ["AI资讯","Gemini 4 Argon","Anthropic","AI编程","Qwen","AI安全"],
+            "excerpt": "十月的第一周，AI 圈同时发生了三件方向相反的事：模型继续往上冲，资本继续往里砸，安全问题却密集爆雷。挑 5 条对普通人有用的，逐条说清楚该怎么看、该怎么办。",
+            "content": `<h2>这一周，AI 圈一边踩油门，一边亮故障灯</h2>
+<p>十月刚开局，AI 圈同时发生了三件"方向相反"的事：模型还在往上冲，资本还在往里砸，但安全问题也在密集爆雷。下面挑 5 条对普通人有用的，逐条说清楚"该怎么看、该怎么办"。</p>
+
+<h2>1. Gemini 4 Argon 领衔，Google 一次端出一桌新东西</h2>
+<p>Google 在 10 月初的月度汇总里，正式把 <strong>Gemini 4 Argon</strong> 推到台前，主打复杂任务的推理能力；同时还上线了 Gemini App 的 Connected Apps 集成、新一代自然语音模型和天气模型 WeatherNext 3。一句话：Google 的迭代节奏已经从"季度级"变成"月级"。</p>
+<p><strong>普通人怎么办：</strong>别抱着半年前的旧版不放，每隔一两周扫一眼更新说明，往往白捡一波新能力。</p>
+
+<h2>2. Anthropic 年化收入冲刺 1000 亿美元，IPO 推迟到 11 月</h2>
+<p>据外媒报道，Anthropic 的年化收入正朝着 1000 亿美元冲刺，比 7 月披露的数字高出约 50%；公司把 IPO 从 10 月推迟到 11 月，以便纳入 Q3 财报，目标估值约 <strong>2 万亿美元</strong>，有望成为史上最大 IPO。拉动增长的主力，是 Claude Code 和 Cowork 在企业端的采用。</p>
+<p><strong>普通人怎么办：</strong>这说明"会用 AI 写代码 / 跑 Agent"正在从加分项变成企业刚需，值得提前练手。</p>
+
+<h2>3. 四大 AI 编程工具被曝"零点击"漏洞</h2>
+<p>安全团队 AIR 披露了代号 <strong>Plugin4Shell</strong> 的零点击远程代码执行漏洞，可绕过插件校验，影响 Claude Code、OpenAI Codex、GitHub Copilot 和 Gemini CLI。目前 Anthropic 已在 Claude Code 2.1.179 修复，OpenAI 在 Codex 0.146.0 修复；Gemini CLI 被直接下线未修复，Copilot 尚未发布补丁。</p>
+<p><strong>普通人怎么办：</strong>把 AI 编程工具升级到最新版；不要给它们安装来源不明的第三方插件——"插件自由"的另一面就是攻击面。</p>
+
+<h2>4. 国产模型继续卷性价比</h2>
+<p>阿里 Qwen 团队发布 <strong>Qwen3.8-Omni-Flash</strong>，一个能同时处理文字、图像、音频、视频的原生全模态模型，支持 100 万 token 上下文；阶跃星辰则放出 600B 参数的 <strong>Step 5 Preview</strong> API，输入低至每百万 token 1 美元，并承诺 10 月 15 日开源权重。</p>
+<p><strong>普通人怎么办：</strong>多模态和长文本需求，可以优先试用国产，价格往往只有海外前沿模型的零头。</p>
+
+<h2>5. 微软 10 月 7 日发布会：AI PC 进入"Agent 时代"</h2>
+<p>微软将于 10 月 7 日在旧金山开发布会，预计推出由 NVIDIA 首款 Arm 架构 AI 芯片 RTX Spark 驱动的 Surface Laptop Ultra，主题正是"agentic AI"。</p>
+<p><strong>普通人怎么办：</strong>近期想换电脑的，不妨等发布会后再定。新一代 AI PC 的看点不是"能不能跑大模型"，而是"能不能在本地跑起 AI Agent"。</p>
+
+<h2>一句话总结</h2>
+<blockquote>这一周的信号很清晰：<strong>能力还在快速变强、价格还在快速变便宜，但"用得安全"开始和"用得上"同等重要。</strong>对普通人来说，最划算的动作是两件——跟紧更新，别乱装插件。</blockquote>
+<p style="margin-top:24px;font-size:0.9em;color:#888;">信息来源：Google 官方博客 2026-10-02（9 月 AI 更新汇总，含 Gemini 4 Argon）；AI Weekly / Yahoo Finance 2026-09-25（Anthropic 年化收入冲刺 1000 亿美元、IPO 推迟至 11 月）；AI Weekly 2026-09-18（Plugin4Shell 零点击漏洞影响四款 AI 编程工具及修复进展）；AI Weekly 2026-09-20（Qwen3.8-Omni-Flash、StepFun Step 5 Preview）；Engadget 2026-10-02（微软 10 月 7 日发布会前瞻）</p>`
+        },
 
         {
             "id": 27,
