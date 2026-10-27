@@ -157,7 +157,25 @@
             .post-card { padding: 20px; }
             .article-content { padding: 24px; }
         }
-    </style>
+    
+        /* --- 变现组件（2026-10-27 新增） --- */
+        .top-cta { background: #fff; border-bottom: 1px solid var(--border); padding: 10px 0; font-size: 0.9em; }
+        .top-cta .container { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .top-cta a { color: var(--accent); text-decoration: none; font-weight: 600; cursor: pointer; }
+        .top-cta a:hover { text-decoration: underline; }
+        .top-cta .t { color: var(--text-light); }
+        .cta-card { margin: 40px 0 0; padding: 22px 24px; border-radius: var(--radius); background: var(--accent-light); border: 1px solid #dbe3ff; }
+        .cta-card h3 { font-size: 1.08em; margin-bottom: 8px; }
+        .cta-card p { font-size: 0.92em; color: #333; margin-bottom: 12px; }
+        .cta-btn { display: inline-block; background: var(--accent); color: #fff !important; text-decoration: none; padding: 9px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9em; margin: 4px 8px 4px 0; }
+        .cta-btn.ghost { background: #fff; color: var(--accent) !important; border: 1px solid var(--accent); }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin: 12px 0 10px; }
+        .tool-grid a { display: block; padding: 8px 10px; background: #fff; border: 1px solid #e3e8ff; border-radius: 8px; text-decoration: none; color: var(--text); font-size: 0.85em; line-height: 1.4; }
+        .tool-grid a span { display: block; color: var(--text-light); font-size: 0.82em; margin-top: 2px; }
+        .tool-note { font-size: 0.76em; color: var(--text-light); margin-top: 10px; line-height: 1.5; }
+        .money-tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 4px; }
+        .money-tags span { font-size: 0.8em; background: #fff; border: 1px solid #e3e8ff; color: var(--accent); padding: 3px 10px; border-radius: 20px; }
+</style>
 </head>
 <body>
 
@@ -178,6 +196,13 @@
     </div>
 </nav>
 
+<div class="top-cta">
+    <div class="container">
+        <div><a onclick="openArticle(48)">🧰 44 篇实测之后，只留这 6 个 AI 工具</a> <span class="t">· 每周更新</span></div>
+        <div class="t">想按你的活配一套？<a href="https://github.com/fishdrawn/fishdrawn-property/issues/new" target="_blank" rel="noopener">💬 在这里留言</a></div>
+    </div>
+</div>
+
 <main class="container" id="app">
     <div id="post-list"></div>
     <div id="article-view" class="article-view"></div>
@@ -186,11 +211,34 @@
 <footer>
     <div class="container">
         <p>AI 工具实测站 · 一个人 + AI 的内容实验</p>
+        <p style="margin-top:8px;font-size:0.85em;">
+            <a onclick="openArticle(48)" style="color:#4361ee;cursor:pointer;text-decoration:none;">工具清单</a>
+            <span style="color:#ccc;"> · </span>
+            <a href="https://github.com/fishdrawn/fishdrawn-property/issues/new" target="_blank" rel="noopener" style="color:#4361ee;text-decoration:none;">联系我</a>
+        </p>
     </div>
 </footer>
 
 <script>
 const posts = [
+{
+        "id": 48,
+        "title": "44 篇实测之后，我删掉了 8 成 AI 工具：2026 年只留这 6 个",
+        "category": "AI 工具实测",
+        "date": "2026-10-27",
+        "excerpt": "从 7 月 20 日第一篇到 10 月 27 日，这个站发了 44 篇、测过 60 多个工具。回头看，每天真的会打开的不到 6 个。这篇把 44 篇压成一张清单：6 个留、5 类删、3 档配置（0/50/200 元），以及不会翻车的替换顺序。",
+        "image": "",
+        "tags": [
+            "AI 工具清单",
+            "DeepSeek",
+            "Kimi",
+            "可灵",
+            "Cursor",
+            "省钱"
+        ],
+        "content": "..."
+    },
+
     {
         "id": 47,
         "title": "MiniMax M3.1 Flash 实测：200+ TPS、1M 上下文、权重已开源，这 5 件事现在就该换",
@@ -704,6 +752,24 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+            "id": 48,
+            "title": "44 篇实测之后，我删掉了 8 成 AI 工具：2026 年只留这 6 个",
+            "category": "AI 工具实测",
+            "date": "2026-10-27",
+            "excerpt": "从 7 月 20 日第一篇到 10 月 27 日，这个站发了 44 篇、测过 60 多个工具。回头看，每天真的会打开的不到 6 个。这篇把 44 篇压成一张清单：6 个留、5 类删、3 档配置（0/50/200 元），以及不会翻车的替换顺序。",
+            "image": "",
+            "tags": [
+                "AI 工具清单",
+                "DeepSeek",
+                "Kimi",
+                "可灵",
+                "Cursor",
+                "省钱"
+            ],
+            "content": "<h2>先把结论放前面</h2>\n        <p>从 7 月 20 日第一篇到现在，这个站发了 44 篇，测过的工具、模型、插件加起来超过 60 个。回头看一个很扎心的事实：<strong>每天真的会打开的，不超过 6 个。</strong></p>\n        <p>剩下的不是不好，是「看起来有用」。它们不解决我每天要干的活，只解决我「怕错过」的焦虑。这篇把 44 篇压成一张清单：留什么、删什么、多少钱够、按什么顺序换。</p>\n        <h2>留下的 6 个（附理由，不是跑分）</h2>\n        <p><strong>1. DeepSeek —— 日常写改主力</strong><br>中文表达自然、免费网页版够用、API 便宜到可以浪费。写初稿、改语气、解释报错，我 80% 的文字活都在这儿完成。它不最聪明，但最不容易让我等。</p>\n        <p><strong>2. Kimi —— 长文档专用</strong><br>1M 上下文 + 价格比上代降三分之一之后，合同、论文、几十页报告可以整本丢进去问。注意：长上下文不等于记得住，关键结论还是要自己回原文核对。</p>\n        <p><strong>3. MiniMax M3.1 Flash —— 批量与 Agent</strong><br>200+ TPS 的意义不是「快」，是<strong>敢把它放进循环里</strong>：一次跑 50 条、跑整晚都不心疼。权重已开源，隐私敏感的活可以搬回本地。</p>\n        <p><strong>4. 可灵 Kling 4.0 —— 短视频</strong><br>单次 30 秒、15 项参考，人物不崩脸、物体不穿模。做内容号的话，这是目前性价比最高的一条出片路径。</p>\n        <p><strong>5. Cursor（+ Claude Code）—— 改真实项目</strong><br>生成代码的工具有一堆，能读懂你现有仓库、只改那三行的很少。这是我唯一愿意按月付的编程工具。</p>\n        <p><strong>6. Manus —— 多步跑腿</strong><br>它不是聊天，是「你说目标、它自己拆步骤」。适合查资料、整理表格、跨站点比价这类你不想动手的活。每月用几次就值回票价，天天用会心疼。</p>\n        <p><strong>两个白嫖位（不占预算）：</strong>千问 Qwen-Image-2.1 本地出图（7B，透明图很好用）、n8n 自建自动化。这两样学会，等于省下一个订阅。</p>\n        <h2>删掉的 5 类（以及为什么）</h2>\n        <ul>\n        <li><strong>低价 AI 中转站。</strong>8.8 元买 5000 积分那种，央视点过名。省下的几十块，代价可能是你的对话数据——这笔账怎么算都亏。</li>\n        <li><strong>「本周最强」的新模型订阅。</strong>模型现在一周一个王，追是追不完的。免费额度先用，等它稳定两个月再谈付费。</li>\n        <li><strong>同质化的聊天工具。</strong>同价位留一个就够，多开只会让工作流碎片化，还容易在切换里浪费时间。</li>\n        <li><strong>「AI 自动赚钱」类 SaaS。</strong>没有流量入口，自动化只是在空转。工具的尽头还是内容或服务。</li>\n        <li><strong>按月订阅的 PPT / 设计工具。</strong>一年用三次的，按次买或者用免费版，别年付。</li>\n        </ul>\n        <h2>三档配置：按你每月愿意花多少</h2>\n        <div class=\"money-tags\"><span>0 元档</span><span>50 元档</span><span>200 元档</span></div>\n        <p><strong>0 元档：</strong>DeepSeek 网页版 + Kimi 免费额度 + 千问本地生图 + n8n 自建。<br>够干 90% 的活，缺点是要排队、有限速。</p>\n        <p><strong>50 元档：</strong>上面那套 + DeepSeek API 小额充值 + 可灵月付（只在有片子要出的时候开）。<br>这是我目前的状态，一个月撑死 60 块。</p>\n        <p><strong>200 元档：</strong>加 Cursor（或 Claude Code）+ Manus 按次。<br>适合靠这个接单、做号的人——工具成本应该由收入覆盖，不是由工资覆盖。</p>\n        <blockquote>一个真话：先按 0 元档跑两周，每天记一下自己打开了哪个工具。两周后按「打开次数」付钱，比按「测评排名」付钱准得多。</blockquote>\n        <h2>替换顺序：别一次性全换</h2>\n        <ol>\n        <li><strong>先换写作主力，观察两周。</strong>写作是最安全的试验田，出错成本最低。</li>\n        <li><strong>再换长文档工具，观察一周。</strong>重点看它会不会「编」——拿三份你已经知道答案的文件去试。</li>\n        <li><strong>最后才动视频和代码。</strong>这两个成本最高、回滚最麻烦，等前面稳定了再说。</li>\n        </ol>\n        <h2>一句话总结</h2>\n        <p>工具越便宜，选择就越贵。<strong>省钱的方式不是买最便宜的，是只买你真的会打开的那个。</strong>这 6 个不是标准答案，只是我 44 篇之后剩下的作业本——你可以照着抄，也可以只抄那个方法。</p>"
+        },
+
         {
             "id": 47,
             "title": "MiniMax M3.1 Flash 实测：200+ TPS、1M 上下文、权重已开源，这 5 件事现在就该换",
@@ -2216,6 +2282,25 @@ const posts = [
         viewEl.style.display = 'none';
     }
 
+
+    function ctaHTML(post) {
+        return '<div class="cta-card">' +
+            '<h3>🧰 这 6 个工具，是我 44 篇实测后真正留下的</h3>' +
+            '<p>不推荐「最新最强的」，只推荐「每天真的会打开的」。下面全是官方入口，点进去就是官网。</p>' +
+            '<div class="tool-grid">' +
+            '<a href="https://chat.deepseek.com" target="_blank" rel="noopener">DeepSeek<span>日常写改主力</span></a>' +
+            '<a href="https://kimi.moonshot.cn" target="_blank" rel="noopener">Kimi<span>长文档 / 1M 上下文</span></a>' +
+            '<a href="https://www.minimax.io" target="_blank" rel="noopener">MiniMax<span>批量跑 + Agent</span></a>' +
+            '<a href="https://klingai.kuaishou.com" target="_blank" rel="noopener">可灵 Kling<span>短视频生成</span></a>' +
+            '<a href="https://cursor.com" target="_blank" rel="noopener">Cursor<span>改真实项目</span></a>' +
+            '<a href="https://manus.im" target="_blank" rel="noopener">Manus<span>多步流程跑腿</span></a>'
+            '</div>' +
+            '<a class="cta-btn" href="https://github.com/fishdrawn/fishdrawn-property/issues/new" target="_blank" rel="noopener">💬 按我的活配一套（免费）</a>' +
+            '<a class="cta-btn ghost" onclick="openArticle(48)">看完整清单 →</a>' +
+            '<p class="tool-note">说明：本站目前所有工具链接都是官方入口，我拿不到一分钱。哪天接了返佣计划，会在文末明确写出来——不写就是没有。</p>' +
+            '</div>';
+    }
+
     window.openArticle = function(id) {
         const post = allPosts.find(p => p.id === id);
         if (!post) return;
@@ -2225,6 +2310,7 @@ const posts = [
                 <h1>${post.title}</h1>
                 <div class="article-meta">${post.category} · ${post.date}</div>
                 ${post.content}
+                ${ctaHTML(post)}
             </div>
         `;
         listEl.style.display = 'none';
