@@ -224,6 +224,16 @@
 <script>
 const posts = [
     {
+        "id": 53,
+        "title": "Gemini 4 Argon 便宜到 11 月 30 日：涨价一倍前，先算这 3 个数字",
+        "category": "提效指南",
+        "date": "2026-11-01",
+        "excerpt": "Google 官方定价：Gemini 4 Argon 促销期输入 $2／输出 $10（每百万 token），2026-11-30 促销结束后涨到 $4／$20，正好翻倍（IT之家 2026-10-14 引述）。涨价前该不该把工作流搬过去？答案不在单价，在「单任务 token 数」。附一份 45 分钟算完的成本对比，和 3 个已经有人踩过的坑。",
+        "image": "",
+        "tags": ["Gemini 4 Argon","API 定价","成本核算","订阅","避坑"],
+        "content": "..."
+    },
+    {
         "id": 52,
         "title": "PPT 代做一页 10 元还是 200 元：2026 年 10 月报价表，和用 AI 接单的真实成本账",
         "category": "变现思路",
@@ -795,6 +805,16 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+            "id": 53,
+            "title": "Gemini 4 Argon 便宜到 11 月 30 日：涨价一倍前，先算这 3 个数字",
+            "category": "提效指南",
+            "date": "2026-11-01",
+            "excerpt": "Google 官方定价：Gemini 4 Argon 促销期输入 $2／输出 $10（每百万 token），2026-11-30 促销结束后涨到 $4／$20，正好翻倍（IT之家 2026-10-14 引述）。涨价前该不该把工作流搬过去？答案不在单价，在「单任务 token 数」。附一份 45 分钟算完的成本对比，和 3 个已经有人踩过的坑。",
+            "image": "",
+            "tags": ["Gemini 4 Argon","API 定价","成本核算","订阅","避坑"],
+            "content": "<h2>结论先行</h2>\n<p>11 月 30 日之后，Gemini 4 Argon 的 API 价格从输入 $2／输出 $10（每百万 token）涨到 $4／$20，正好翻一倍。</p>\n<p>两条结论：<strong>每天产出一万到几万 token 的个人用户</strong>，别搬工作流，$19.99 的 Google AI Pro 订阅比 API 划算；<strong>真要搬的</strong>，现在就把缓存和批量任务配好，这两项能吃掉大部分涨价。</p>\n<h2>先把价格摆清楚（2026-11-01 核实）</h2>\n<ul>\n<li><strong>Gemini 4 Argon API</strong>：促销期输入 $2/百万 token、输出 $10、缓存读 $0.1；11 月 30 日后 $4／$20／$0.2（Google 官方定价，IT之家 2026-10-14 引述）。</li>\n<li><strong>Google AI Pro $19.99/月</strong>：含 Gemini App 与搜索 AI 模式里的 Argon，附 5TB 存储（Google One 方案页，2026-11-01 访问）。但 Pro <strong>不含</strong> API 额度；Antigravity、AI Studio 里用 Argon 要 Ultra，起价 $99.99/月（数位时代 2026-10-14）。</li>\n<li><strong>Claude Sonnet 5.5 $2／$10</strong>，缓存读 $0.10，是 Opus 5.5 的一半（Anthropic 官方 2026-09-28）。</li>\n</ul>\n<p>单价上，Argon 的促销价和 Sonnet 5.5 打平，涨价后贵一倍。所以「谁便宜」这个问题的答案，只挂在 11 月 30 日这个日期上。</p>\n<h2>真正的成本不在单价，在单任务 token 数</h2>\n<p>Decrypt 2026-09-28 的实测值得记下来：Sonnet 5.5 在 max effort 档位下，单个测试任务写了约 19.3 万 token，折合 $7.60 一个任务，比上一代贵 50%——尽管官方口径是「便宜 30%」。单价没变，token 数变了，账单就反过来。</p>\n<p>所以成本只算三个数：<strong>单任务输出 token × 输出单价</strong>、<strong>返工次数</strong>、<strong>缓存命中率</strong>。举个能直接对着算的例子：每天发 30 篇 800 字稿，每篇输出约 2500 token，就是 7.5 万 token/天；按 $10/百万是 $0.75/天，加上输入约两成，一个月接近 $27，涨价后变 $54。而 Google AI Pro 是 $19.99——这个量，订阅赢，别碰 API。</p>\n<p>反过来，跑批量任务（一次几千条分类、打标、翻译）时 API 才有意义，而且必须在 11 月 30 日前把长 prompt 的缓存结构做好：Argon 缓存读 $0.1 对输入 $2，是 20 倍差距。</p>\n<h2>3 个已经有人踩过的坑</h2>\n<ol>\n<li><strong>促销价到期不会提醒你。</strong>过了 11 月 30 日直接按新价扣，没有弹窗。现在就在日历上放一个 11 月 25 日的提醒。</li>\n<li><strong>订阅 ≠ API。</strong>买了 Google AI Pro 不代表能在代码里调 Argon，API 是另一套计费。两边都要，成本得叠加算。</li>\n<li><strong>「更便宜的新模型」可能更贵。</strong>max effort 就是活例子。把思考档位调到 high 或 medium，通常省一半以上，效果差不了多少。</li>\n</ol>\n<h2>今天就能做的 3 件事</h2>\n<ol>\n<li><strong>（10 分钟）查账单。</strong>打开服务商后台的用量页，记下最近 7 天的 token 消耗，除以 7 得到日均值。没有这个数，后面全是猜。</li>\n<li><strong>（15 分钟）做一次对比跑。</strong>拿你最高频的任务，同一份输入分别用现在的模型和 Argon 跑一遍，记下 token 数和用时。只看结果不看 token 的对比，等于没做。</li>\n<li><strong>（20 分钟）在 11 月 30 日前做个决定。</strong>日均 token × 30 天 × 新价格，如果超过 $19.99 的两倍，值得继续用 API；否则主工作流留在订阅里，API 只留给批量任务。</li>\n</ol>\n<p>价格战每年打一轮，赢的从来不是最早换模型的人，是手里有自己用量数据的人。</p>"
+},
 {
             "id": 52,
             "title": "PPT 代做一页 10 元还是 200 元：2026 年 10 月报价表，和用 AI 接单的真实成本账",
