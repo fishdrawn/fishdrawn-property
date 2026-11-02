@@ -224,6 +224,16 @@
 <script>
 const posts = [
     {
+        "id": 54,
+        "title": "Claude 订阅怎么选：$20、$100、$200 三档只差 4 项，Pro 用户最容易多花钱",
+        "category": "AI 工具实测",
+        "date": "2026-11-02",
+        "excerpt": "2026-10-30 Anthropic 把 Max 5x 改名 Max（$100/月）、Max 20x 改名 Ultra（$200/月），价格没动（claude.com/pricing，kevinwelter.com 2026-10-30 更新）。三档在 54 项对比里只差 4 项：价格、会话额度、API credits、Fable 归属。最容易多花钱的不是选错档，是 Pro 上用 Fable 5.1 却不知道第一条消息就开始按量扣钱。",
+        "image": "",
+        "tags": ["Claude","订阅","Pro vs Max","Fable 5.1","避坑"],
+        "content": "..."
+    },
+    {
         "id": 53,
         "title": "Gemini 4 Argon 便宜到 11 月 30 日：涨价一倍前，先算这 3 个数字",
         "category": "提效指南",
@@ -805,6 +815,16 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+            "id": 54,
+            "title": "Claude 订阅怎么选：$20、$100、$200 三档只差 4 项，Pro 用户最容易多花钱",
+            "category": "AI 工具实测",
+            "date": "2026-11-02",
+            "excerpt": "2026-10-30 Anthropic 把 Max 5x 改名 Max（$100/月）、Max 20x 改名 Ultra（$200/月），价格没动（claude.com/pricing，kevinwelter.com 2026-10-30 更新）。三档在 54 项对比里只差 4 项：价格、会话额度、API credits、Fable 归属。最容易多花钱的不是选错档，是 Pro 上用 Fable 5.1 却不知道第一条消息就开始按量扣钱。",
+            "image": "",
+            "tags": ["Claude","订阅","Pro vs Max","Fable 5.1","避坑"],
+            "content": "<h2>结论先行</h2>\n<p>2026 年 10 月 30 日，Anthropic 把两个 Max 档改了名：Max 5x 变成 Max（$100/月），Max 20x 变成 Ultra（$200/月），价格一分没动（claude.com/pricing；kevinwelter.com 2026-10-30 更新）。</p>\n<p>三句话：<strong>每周不撞额度的人，Pro $20 就够</strong>；<strong>每周都撞额度、且本来就在付 API 钱的人，上 Max $100</strong>；<strong>Ultra $200 只对每天跑满几小时 Claude Code 的人有意义</strong>。最容易多花钱的不是档位选错，是 Pro 上用了 Fable 5.1，却不知道从第一条消息起就在按量扣钱。</p>\n<h2>三档到底差什么（2026-11-02 核实）</h2>\n<ul>\n<li><strong>Pro $20/月，年缴 $17/月</strong>（一次性付 $200）。含 Claude Code、Cowork、Projects、Opus 5.5，周额度为基准 1x。</li>\n<li><strong>Max $100/月</strong>（原 Max 5x）。每 5 小时 5x Pro，周额度 5x，附 <strong>$100/月 API credits</strong>，Fable 可用到周额度的 50%。仅月付，没有年缴。</li>\n<li><strong>Ultra $200/月</strong>（原 Max 20x）。每 5 小时 20x Pro，周额度 10x，verified 账户取消 5 小时窗口，附 $200 credits。</li>\n</ul>\n<p>官方那张 54 行的对比表里，三档真正不同的只有 4 行：价格、会话额度、API credits、Fable 的归属。功能层面（Claude Code、Cowork、Research、Design）三档完全一样——所以「升级解锁功能」这个想法是错的，升级只买用量。</p>\n<h2>坑一：Pro 上的 Fable，从第一句话开始算钱</h2>\n<p>Fable 5 和 Fable 5.1 在 Pro 上是<strong>纯 usage credits</strong>，一分钟的包含额度都没有。7 月 20 日以前 Pro 还能用周额度的 50%，之后这个口子关了；Max 和 Ultra 保留 50%（support.claude.com 2026-10-26 核实；claude-media.com 2026-10-19）。</p>\n<p>Fable 5.1 的 API 价是 $10／$50 每百万 token、缓存读 $0.25，是 Sonnet 5.5（$2／$10）的 5 倍。一次长任务输出 20 万 token 就是 $10——半个 Pro 订阅没了。</p>\n<p>两个动作现在做：进 <strong>Settings &gt; Usage &gt; Usage credits</strong> 设月度上限；每次打开 Fable 前先看一眼余额。</p>\n<h2>坑二：$100 credits 不能当订阅额度花</h2>\n<p>Max / Ultra 附的 API credits 是给 Claude Developer Platform 用的，<strong>不能</strong>在 Claude Code 和 App 里抵扣（mexc.com 2026-10-26 整理，援引官方 plan table）。有人把「$100 credits」理解成「$100 额外聊天额度」，月底发现订阅额度用完、credits 一分没动。真要把它花掉，得去 console 里调 API。</p>\n<h2>坑三：同价不等于同成本</h2>\n<p>Opus 4.7 起换了新 tokenizer，同样一段文字会被切成更多 token，当时企业账单上升 37%-47%；Haiku 5.5 的 token 数也比 Haiku 4.5 多约 30%（Anthropic 官方说明，abmedia.io 2026 年 10 月整理）。所以「新一代更便宜」这话得按 token 数重算一遍，光看单价表会算反。</p>\n<h2>今天就能做的 3 件事</h2>\n<ol>\n<li><strong>（5 分钟）看额度页。</strong>打开 Settings &gt; Usage，记下本周用量和有没有触顶。连续两周没触顶，别升级，升级只买到你本来用不完的东西。</li>\n<li><strong>（10 分钟）关掉隐形计费。</strong>在 Usage credits 里设一个月度上限，先设 $20。这一条能挡住绝大多数意外账单。</li>\n<li><strong>（15 分钟）算升级线。</strong>把上月 API 账单加上「因限流停工的时间 × 你的时薪」。API 超过 $80，或每周停工 2 小时以上，再上 Max $100；否则留在 Pro，缺什么买什么 credits。</li>\n</ol>\n<p>订阅这件事的规律一直没变：贵的那档从来不解决「不够聪明」，只解决「不够用」。先确认自己是第二种人。</p>"
+},
 {
             "id": 53,
             "title": "Gemini 4 Argon 便宜到 11 月 30 日：涨价一倍前，先算这 3 个数字",
