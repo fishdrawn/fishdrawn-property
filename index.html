@@ -223,6 +223,22 @@
 
 <script>
 const posts = [
+{
+        "id": 55,
+        "title": "Cursor 插件市场被投毒 11 小时：5000 名开发者中招，先查这个 SSH 密钥名",
+        "category": "AI 资讯",
+        "date": "2026-11-03",
+        "excerpt": "2026-10-29，Cursor 扩展市场出现冒用 Anthropic 名义的「Claude Code」插件（v2.1.313），流通约 11 小时、波及多达 5000 名开发者（Bleeping Computer 2026-10-29；少数派 2026-11-02 转述）。它加载即静默执行，摸底主机信息并试图写 SSH 公钥、开反向隧道，只因脚本权限错误才没成。装过的人只需记一个名字：svc-telemetry。附 3 分钟自查顺序和凭证轮换清单。",
+        "image": "",
+        "tags": [
+            "Claude Code",
+            "Cursor",
+            "供应链攻击",
+            "SSH 后门",
+            "避坑"
+        ],
+        "content": "..."
+    },
     {
         "id": 54,
         "title": "Claude 订阅怎么选：$20、$100、$200 三档只差 4 项，Pro 用户最容易多花钱",
@@ -815,6 +831,22 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+        "id": 55,
+        "title": "Cursor 插件市场被投毒 11 小时：5000 名开发者中招，先查这个 SSH 密钥名",
+        "category": "AI 资讯",
+        "date": "2026-11-03",
+        "excerpt": "2026-10-29，Cursor 扩展市场出现冒用 Anthropic 名义的「Claude Code」插件（v2.1.313），流通约 11 小时、波及多达 5000 名开发者（Bleeping Computer 2026-10-29；少数派 2026-11-02 转述）。它加载即静默执行，摸底主机信息并试图写 SSH 公钥、开反向隧道，只因脚本权限错误才没成。装过的人只需记一个名字：svc-telemetry。附 3 分钟自查顺序和凭证轮换清单。",
+        "image": "",
+        "tags": [
+            "Claude Code",
+            "Cursor",
+            "供应链攻击",
+            "SSH 后门",
+            "避坑"
+        ],
+        "content": "<h2>结论先行</h2>\n<p>2026 年 10 月 29 日，Cursor 扩展市场里出现了一个冒用 Anthropic 官方名义的「Claude Code」插件（版本 2.1.313），在架流通约 11 小时，Bleeping Computer 统计波及多达 5000 名开发者（少数派派早报 2026-11-02 转述）。装过的人现在只需要记一个名字：<strong>svc-telemetry</strong>。在 <code>~/.ssh</code> 里看到它，就删密钥、换凭证。</p>\n<h2>它到底做了什么</h2>\n<ul>\n<li><strong>加载即执行</strong>：不用点任何按钮，插件加载时静默运行内嵌的恶意 JavaScript。</li>\n<li><strong>先摸底再动手</strong>：收集主机配置、公网 IP、Git 邮箱、以及敏感环境变量的「名称」，回传到攻击者服务器——只偷名字不偷值，说明它在挑值得下手的机器。</li>\n<li><strong>想装一扇后门</strong>：尝试往 <code>authorized_keys</code> 写公钥、配置反向隧道，把 SSH 变成长期入口。</li>\n<li><strong>它失败了</strong>：配置脚本在 macOS 和 Windows 上都有执行与权限错误，没能把原本没开的 SSH 服务拉起来，实际接管范围被限制住了。</li>\n</ul>\n<p>事后处置：Cursor 下架插件、短暂关闭扩展市场排查、轮换访问密钥、封禁攻击者服务器；Anthropic 表示自身内部系统与官方分发渠道未被入侵，篡改只发生在 Cursor 插件市场这个渠道（Bleeping Computer 2026-10-29；少数派 2026-11-02）。</p>\n<h2>为什么这件事和「付费用户」关系最大</h2>\n<p>Claude Code 的入场券是订阅：Pro $20／月、Max $100／月、Ultra $200／月（claude.com/pricing，2026-10-30 核实）。所以真正被盯上的不是那 20 美元，是这些人机器里的东西：<strong>按量计费的 API key、Git 凭证、云厂商 AK</strong>。Fable 5.1 的 API 价是 $10／$50 每百万 token（Anthropic 定价页，2026-11-02 核实），密钥泄露一晚上就能刷出比年费更高的账单。</p>\n<p>换句话说：插件是免费装的，账单是后付的。</p>\n<h2>3 分钟自查，按顺序做</h2>\n<ul>\n<li><strong>查密钥文件</strong>：macOS／Linux 看 <code>~/.ssh/svc-telemetry</code> 和 <code>svc-telemetry.pub</code>；Windows 看 <code>C:\\Users\\你的用户名\\.ssh\\</code>。有就整个移走再删除。</li>\n<li><strong>查授权与隧道</strong>：打开 <code>~/.ssh/authorized_keys</code> 删掉不认识的条目；再看 <code>~/.ssh/config</code> 有没有你从没配过的 Host 或 <code>RemoteForward</code>。</li>\n<li><strong>换凭证</strong>：GitHub token、云厂商 AK、所有放在环境变量里的模型 API key 全部轮换，Cursor 里退出重新登录。</li>\n</ul>\n<p>顺手再看一眼 Cursor 的扩展列表：publisher 不是 Anthropic 的「Claude Code」，直接卸掉。</p>\n<h2>下次怎么不踩</h2>\n<ul>\n<li>只从官方文档给出的链接进市场，<strong>不在市场里搜名字装</strong>——搜索结果的排序不是安全评级。</li>\n<li>认 publisher 和签名，不认图标和标题。这次栽的人，多数是看到「Claude Code」四个字就点了安装。</li>\n<li>给 API key 设月度消费上限（Anthropic Console &gt; Limits），泄露也有止损线。</li>\n<li>团队里装插件走白名单，别让每个人自己搜。</li>\n</ul>\n<h2>今天就能做的 3 件事</h2>\n<ol>\n<li><strong>现在</strong>打开 <code>~/.ssh</code> 搜 <code>svc-telemetry</code>，2 分钟能查完。</li>\n<li><strong>接着</strong>轮换你手上最贵的那把 key——先换云厂商或 Anthropic 的，别从最不重要的开始。</li>\n<li><strong>最后</strong>去 Anthropic Console 设月度上限，再回 Cursor 卸掉所有 publisher 对不上的扩展。</li>\n</ol>"
+    },
 {
             "id": 54,
             "title": "Claude 订阅怎么选：$20、$100、$200 三档只差 4 项，Pro 用户最容易多花钱",
