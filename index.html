@@ -224,6 +224,22 @@
 <script>
 const posts = [
 {
+        "id": 63,
+        "title": "Claude 贵 4 倍只多 8 分：Fable 5.2 与 Gemini 4 Carbon 怎么配，11 月 30 日是分界线",
+        "category": "AI 工具实测",
+        "date": "2026-11-11",
+        "excerpt": "11 月 9-10 日两家各发新旗舰：Claude Fable 5.2 每百万 Token 8/40 美元，Gemini 4 Carbon 首发 2/10 美元，12 月 1 日涨到 4/20。贵 4 倍换来智能体编码 8 分（49.1% 对 41.1%）。用重试率算清该选谁：优惠期 Carbon 要试 4 次才追平，12 月后只要 2 次。",
+        "image": "",
+        "tags": [
+            "Claude",
+            "Gemini",
+            "模型对比",
+            "API 价格",
+            "选型"
+        ],
+        "content": "..."
+    },
+{
         "id": 62,
         "title": "扣子 11 月 12 日改价：4 个档位逐条算，高阶版没涨价但单价贵了 12%",
         "category": "AI 资讯",
@@ -944,6 +960,22 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+        "id": 63,
+        "title": "Claude 贵 4 倍只多 8 分：Fable 5.2 与 Gemini 4 Carbon 怎么配，11 月 30 日是分界线",
+        "category": "AI 工具实测",
+        "date": "2026-11-11",
+        "excerpt": "11 月 9-10 日两家各发新旗舰：Claude Fable 5.2 每百万 Token 8/40 美元，Gemini 4 Carbon 首发 2/10 美元，12 月 1 日涨到 4/20。贵 4 倍换来智能体编码 8 分（49.1% 对 41.1%）。用重试率算清该选谁：优惠期 Carbon 要试 4 次才追平，12 月后只要 2 次。",
+        "image": "",
+        "tags": [
+            "Claude",
+            "Gemini",
+            "模型对比",
+            "API 价格",
+            "选型"
+        ],
+        "content": "<h2>结论先行</h2>\n<p>11 月 9 日到 10 日，Anthropic 和谷歌各发了一个\"最强\"：Claude Fable 5.2 每百万 Token 输入 8 美元 / 输出 40 美元，Gemini 4 Carbon 首发优惠 2 / 10 美元。<strong>贵 4 倍，智能体编码跑分只多 8 分（49.1% 对 41.1%）</strong>。所以默认选 Carbon；只有\"一次做对\"直接决定成本的长链路任务，才值得上 Fable 5.2。另外记住一个日子：<strong>11 月 30 日优惠结束，Carbon 涨到 4 / 20 美元，差价从 4 倍缩到 2 倍</strong>，那天的判断标准要重算。</p>\n<h2>三个价格，一张表</h2>\n<p>单位：美元 / 百万 Token。</p>\n<ul>\n<li>Claude Fable 5.2：输入 8 / 输出 40（上一代 10 / 50，降 20%）</li>\n<li>Gemini 4 Carbon（至 2026-11-30）：输入 2 / 输出 10</li>\n<li>Gemini 4 Carbon（2026-12-01 起）：输入 4 / 输出 20</li>\n</ul>\n<h2>换成\"跑一次任务多少钱\"</h2>\n<p>按一次 5 万输入 + 1 万输出算，约等于一次中等规模代码修改：</p>\n<ul>\n<li>Fable 5.2：0.4 + 0.4 = <strong>0.80 美元</strong>，约 5.3 元</li>\n<li>Carbon 优惠期：0.1 + 0.1 = <strong>0.20 美元</strong>，约 1.3 元</li>\n<li>Carbon 12 月起：<strong>0.40 美元</strong>，约 2.7 元</li>\n</ul>\n<p>跑 500 次，优惠期 Carbon 100 美元、Fable 5.2 400 美元，省下的 300 美元够买一整年的订阅。差距全部来自单价，不来自能力。</p>\n<h2>多出来的那 8 分值不值</h2>\n<p>官方跑分：FrontierCode 2.0 智能体编码 49.1% 对 41.1%；Humanity&rsquo;s Last Exam 74.2%，GPT-6 Astra 是 57.2%；VIALS-AA 科学视觉推理 67% 对 64%。Carbon 的长处是上下文与安全：1,048,576 Token 统一上下文、标准输出 65,536 Token（Long Decode 可到 100 万）、low / medium / high 三档推理强度，间接提示词注入测试攻击成功率 0%。</p>\n<p>判断标准只有一个：<strong>重试率</strong>。优惠期 Carbon 便宜 4 倍，意味着它平均试 4 次才过关、成本才追平 Fable 5.2 的一次成功。12 月 1 日之后只便宜 2 倍，<strong>Carbon 平均要试 2 次以上才过关，才该换 Claude</strong>。这个数你跑一周就有，别靠感觉拍。</p>\n<h2>三条先看清再充值的限制</h2>\n<p><strong>1）Carbon 不是人人能用。</strong>API 和 AI Studio 面向付费开发者，消费端是\"向 Google AI Ultra 订阅用户逐步开放\"，覆盖 Antigravity、Gemini 应用和搜索的 AI 模式。Pro 档不一定有，先打开 Antigravity 看模型列表里有没有 gemini-4-carbon。</p>\n<p><strong>2）Fable 5.2 会拦活。</strong>官方明确它仍拦截渗透测试、漏洞利用生成和多数生物研究任务——那些要走需审核的 Mythos 5.2。靠这类单子吃饭的，别把它当主力。</p>\n<p><strong>3）快速模式是加价项。</strong>常规速度提升 30%，可选快速模式最高再快 2.5 倍，但价格更高。批量任务别开，交互式改代码才开。</p>\n<h2>这周怎么配</h2>\n<p>我的做法是双模型路由：批量任务、长文本、多模态输入走 Carbon（1M 上下文吃整份代码库或 PDF 不吃力），一次过的关键改动走 Fable 5.2，两边都记\"第几次才通过\"。11 月 30 日前把能批处理的历史任务清掉——同样的活 12 月做，贵一倍。</p>\n<p><em>来源：IT之家 2026-11-10《Claude Fable 5.2 登场》《8 天从零搓出操作系统》，2026-11-11《Gemini 4 Carbon 登场》，价格与跑分引自两家官方发布；Gemini 优惠截止日 2026-11-30 见 Google AI Studio 文档。单次成本为按上述单价自行计算。</em></p>\n<h2>今天就能做的 3 件事</h2>\n<ol>\n<li>打开 Google AI Studio 或 Antigravity，确认账号能不能调 gemini-4-carbon，能用就把默认模型改过去（10 分钟）。</li>\n<li>挑 10 个你常做的任务，两个模型各跑一遍，记下\"第几次才通过\"和实际 token 消耗，算真实单次成本（40 分钟）。</li>\n<li>把 11 月 30 日写进日历：之前清掉积压的批量任务，之后按\"要试 2 次以上\"这条线重新决定换不换 Claude（5 分钟）。</li>\n</ol>"
+    },
 {
         "id": 62,
         "title": "扣子 11 月 12 日改价：4 个档位逐条算，高阶版没涨价但单价贵了 12%",
