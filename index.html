@@ -224,6 +224,22 @@
 <script>
 const posts = [
 {
+        "id": 74,
+        "title": "腾讯 Hy4 开源 770B：8 张 H200 起步，个人想用它只剩 2 条路",
+        "category": "AI 工具实测",
+        "date": "2026-11-22",
+        "excerpt": "腾讯 11 月 20 日放出 Hy4 三套权重，770B 总参、FP8 约 770GB、官方配方 TP=8，等于 8 张 H200 起步。但官方 12 张对比图里它只在 GUI 操作（OSWorld 81.8）拿第一，终端任务落后 Kimi 22 分。三条替代路径和三个必算数字。",
+        "image": "",
+        "tags": [
+            "腾讯混元",
+            "Hy4",
+            "开源模型",
+            "私有化部署",
+            "选型"
+        ],
+        "content": "..."
+    },
+{
         "id": 73,
         "title": "AI 知识库搭建多少钱？3 档报价 + 5 个必问，个人先别碰 8 万那档",
         "category": "变现思路",
@@ -1120,6 +1136,22 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+        "id": 74,
+        "title": "腾讯 Hy4 开源 770B：8 张 H200 起步，个人想用它只剩 2 条路",
+        "category": "AI 工具实测",
+        "date": "2026-11-22",
+        "excerpt": "腾讯 11 月 20 日放出 Hy4 三套权重，770B 总参、FP8 约 770GB、官方配方 TP=8，等于 8 张 H200 起步。但官方 12 张对比图里它只在 GUI 操作（OSWorld 81.8）拿第一，终端任务落后 Kimi 22 分。三条替代路径和三个必算数字。",
+        "image": "",
+        "tags": [
+            "腾讯混元",
+            "Hy4",
+            "开源模型",
+            "私有化部署",
+            "选型"
+        ],
+        "content": "<h2>结论先行</h2>\n<p>11 月 20 日，腾讯混元把 Hy4 的三套权重（指令版、FP8 版、base 基座）连同 GGUF 一起放上了 Hugging Face、ModelScope 和 GitCode，部署配方也给全了。但先看清一个数字：<strong>770B 总参数，FP8 权重约 770GB</strong>，官方 vLLM 配方直接写 <code>--tensor-parallel-size 8</code>——入门就是 8 张 H200（141GB×8=1128GB），装完 FP8 没多少余量。个人电脑、单张 4090 这条路，官方根本没给你留。</p>\n<p>所以它值不值得关注？值得，但只对两类人：要做「AI 操作软件」类产品的团队，和靠卖部署/选型咨询吃饭的人。想拿它当编程主力，官方自己的对比图就劝退你了。</p>\n<h2>先算三个数，再决定要不要下载</h2>\n<ul>\n<li><strong>显存</strong>：BF16 约 1.5TB，FP8 约 770GB。按 770GB ÷ 24GB 粗算，纯放权重就要 32 张 4090 起步，还没算 KV cache 和 1M 上下文的开销。</li>\n<li><strong>并发与运维</strong>：稀疏注意力要 <code>--attention-backend FLASHMLA_SPARSE</code>，投机解码要 DFly2 镜像支持，镜像或参数错一个，服务起不来或性能腰斩。官方给了 recipe，但没给「最小可用集群」的验收清单。</li>\n<li><strong>许可</strong>：模型卡写的是 Tencent Hy License，<em>不是</em> Apache 2.0。商用前把 LICENSE 那一页读完，别按「开源=随便用」推进；9 月 preview 版的条款和现在这份不一定一样。</li>\n</ul>\n<h2>它强在哪：GUI，不是代码</h2>\n<p>官方在模型卡里放了 12 张对比图，横向比 GLM-5.3、DeepSeek-V4.1-Flash、Kimi K3.1 Pro、Claude Opus 5.5、GPT-6.1 Sol。结论挺反直觉：<strong>Hy4 只在 OSWorld 2.1（图形界面里操作电脑）拿到第一，81.8 分</strong>；Terminal Bench 4.0 是 44.4 对 Kimi K3.1 Pro 的 66.8，差 22.4 分；ProgramBench 只有 30.0。它对 Blender、CAD 做过定向训练，也适配了 Unreal、Unity、Godot。</p>\n<p>翻译成人话：让它替你点软件、跨应用跑长流程，有戏；让它写代码、跑终端任务，你手上现成的模型更划算。这些分数全部来自腾讯自评，标「内部」的基准没有公开数据集可复现。</p>\n<h2>个人和小团队能走的两条路</h2>\n<ol>\n<li><strong>走 API 或 OpenRouter 端点</strong>：模型卡自己标了 OpenRouter 是推理提供方之一。按 token 付费，不用碰显卡，适合先验证「这类活它是不是真比现有模型强」。</li>\n<li><strong>租 8 卡按小时</strong>：只在客户已经确定要私有化部署时才做。租之前把镜像版本、稀疏注意力参数、投机解码参数写成一张验收单，跑不通当场退，别按天包。</li>\n</ol>\n<p>顺带说个能收钱的动作：<strong>「Hy4 部署体检」本身就是一单生意</strong>——显存、许可、运维三项，出一页纸的结论，报价按小时或一次性报告。这活不需要你有 GPU。</p>\n<h2>今天就能做的 3 件事</h2>\n<ol>\n<li>打开 Hugging Face 的 tencent/Hy4 模型卡，翻到 LICENSE 那一节读完（约 10 分钟）。这一步决定你能不能商用，比看跑分重要。</li>\n<li>在 OpenRouter 找到 Hy4 端点，拿你手头最常做的 5 条任务跑一遍，和现在用的模型对照，记录「哪条它更好、哪条更差」（约 30 分钟）。</li>\n<li>如果你服务企业客户，把「770GB / 8 卡 / TP=8」三个数字写进报价前置条件，下次有人问「能不能私有化」直接发过去（约 20 分钟）。</li>\n</ol>\n<p><em>数据来源：Hugging Face 模型卡 tencent/Hy4（2026-11-20 更新）、腾讯混元官方公告（2026-11-20）、Hy4 System Card（hy.tencent.ai）。参数、分数、许可均为厂商自报，采购或商用前请以模型卡当前版本为准。</em></p>"
+    },
 {
         "id": 73,
         "title": "AI 知识库搭建多少钱？3 档报价 + 5 个必问，个人先别碰 8 万那档",
