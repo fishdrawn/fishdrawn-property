@@ -224,6 +224,22 @@
 <script>
 const posts = [
 {
+        "id": 78,
+        "title": "Claude Ship 上线：AI 审完代码还想自己批准合并，先算清这 3 笔账",
+        "category": "AI 工具实测",
+        "date": "2026-11-26",
+        "excerpt": "Anthropic 11 月 23 日发布 Claude Ship：AI 审 PR、修 CI、按策略文件批准合并，只对 Team/Enterprise 开放且按 token 另计费。算清人力、返工、误判三笔账，附一条给小团队做配置代做的落地路径。",
+        "image": "",
+        "tags": [
+            "Claude Ship",
+            "AI 编程",
+            "代码审查",
+            "小团队",
+            "变现"
+        ],
+        "content": "..."
+    },
+{
         "id": 77,
         "title": "AI 替你点鼠标前，先关掉这 5 个权限（30 分钟体检清单）",
         "category": "提效指南",
@@ -1184,6 +1200,22 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+        "id": 78,
+        "title": "Claude Ship 上线：AI 审完代码还想自己批准合并，先算清这 3 笔账",
+        "category": "AI 工具实测",
+        "date": "2026-11-26",
+        "excerpt": "Anthropic 11 月 23 日发布 Claude Ship：AI 审 PR、修 CI、按策略文件批准合并，只对 Team/Enterprise 开放且按 token 另计费。算清人力、返工、误判三笔账，附一条给小团队做配置代做的落地路径。",
+        "image": "",
+        "tags": [
+            "Claude Ship",
+            "AI 编程",
+            "代码审查",
+            "小团队",
+            "变现"
+        ],
+        "content": "<h2>结论先行</h2>\n<p>Claude Ship 值得关注，但今天不值得大多数人付费：它只对 Claude Team / Enterprise 组织开放，按 token 另计费，两个核心 agent 还在 beta。能立刻拿走的是它暴露的成本结构——AI 审代码便宜，AI 批准合并很贵，因为一次误合并的代价没有上限。</p>\n<h2>它到底做了什么</h2>\n<p>Anthropic 11 月 23 日发布 Claude Ship（官方博客 2026-11-23，TechCrunch 同日报道）。拆成三块：Code Review 已正式可用；PR Steward 负责修 CI 失败、合并冲突、按评论改代码，每次推送后留言说明改了什么、怎么回滚，但明确不批准也不合并；Claude Approvals 读仓库里的 <code>.claude/approvals.yml</code> 策略文件，判断哪些改动可以由 AI 批准。审查深度可选 Quick / Standard / Deep，按仓库设置。</p>\n<h2>谁现在能用，谁用不上</h2>\n<p>门槛写得很清楚：Claude Team 或 Enterprise 套餐、GitHub 仓库；启用了 Zero Data Retention、HIPAA 配置或客户自管密钥的组织不能用。费用走组织额度、按 token 另算；Approvals 本身没有基础费，但策略里的分类器和它触发的 Code Review 都计费，哪怕只是 observe（只观察不拦截）模式。符合条件的企业版组织可领至少 1 万美元 Claude Ship 额度，领取后 30 天内用完，领取截止 2027 年 1 月 15 日。</p>\n<p>一句话：个人订阅用户、非 GitHub 的自建 Git、用 ZDR 的团队，现在都用不上。</p>\n<h2>值不值，算 3 笔账</h2>\n<ol>\n<li><strong>人力账</strong>：一个 PR 人工 review 20 分钟，按 150 元/小时算约 50 元；一天 10 个 PR，一个月约 1.1 万元。AI review 的成本是 token，通常远低于这个数，但 Deep 深度审查和大 PR 会把差距拉小。</li>\n<li><strong>返工账</strong>：Anthropic 称自家 Claude Code 团队 6 月到 9 月合并 PR 数翻倍以上、被回滚的 PR 占比降超 40%（厂商自述，未给绝对数）。这类数字只能当方向，不能当承诺。</li>\n<li><strong>误判账</strong>：官方自己建议 Approvals 先跑 observe 模式、先接一个仓库、设月度花费上限——这三条本身就是「别全信」的提示。自动批准上线前，分支保护里至少留一条人工必审规则。</li>\n</ol>\n<h2>能落地的一小块生意</h2>\n<p>国内中小研发团队大多不在 Claude Team / Enterprise 上，但同样被 review 卡住。可做的不是卖账号（合规和封号风险都高），而是卖配置：帮团队定 review 规则、写 approvals 策略、配分支保护和花费上限，用他们已有的工具（GitHub + 任一支持 MCP 的审查工具）。</p>\n<p>报价按工时给：首次 2 小时远程配置，建议 800–1500 元，含 1 个月复检。这是按时间成本给的区间，不是市场统一价；先跑通一家团队再复制。</p>\n<h2>今天就能做的 3 件事</h2>\n<ol>\n<li>打开仓库 Settings → Branches，确认主干分支强制 1 人以上审批；没有就先加上（5 分钟）。</li>\n<li>统计最近 20 个 PR 的人工 review 耗时，乘你的时薪，算出「每月 review 成本」这一个数（20 分钟）。</li>\n<li>把这个数发给 2 个有研发团队的朋友，问一句「这笔钱你想不想省一半」，有人回「想」就是第一个客户（10 分钟）。</li>\n</ol>\n<p><em>来源：Anthropic 官方博客《Introducing Claude Ship》2026-11-23；TechCrunch 2026-11-23；Help Net Security 2026-11-24；InfoWorld 2026-11-24。Claude Ship 的 token 单价未公开，成本以组织实际用量为准；文中 800–1500 元与 150 元/小时均为按工时给出的建议，非官方或市场统一报价。</em></p>"
+    },
 {
         "id": 77,
         "title": "AI 替你点鼠标前，先关掉这 5 个权限（30 分钟体检清单）",
