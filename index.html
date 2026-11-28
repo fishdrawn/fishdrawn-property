@@ -224,6 +224,22 @@
 <script>
 const posts = [
 {
+            "id": 80,
+            "title": "12 月 1 日 Gemini 账单翻倍：3 天窗口期，先改这 5 处",
+            "category": "AI 资讯",
+            "date": "2026-11-28",
+            "excerpt": "Gemini 4 Carbon 和 Argon 的 API 单价 12 月 1 日整倍上涨：输入 $2→$4、输出 $10→$20；同一天 2.5 系列请求被自动转走，function calling 还会变。token 囤不了，但能把活跑完、把模型名改掉。",
+            "image": "",
+            "tags": [
+                "Gemini",
+                "API 定价",
+                "模型迁移",
+                "成本控制",
+                "AI 资讯"
+            ],
+            "content": "..."
+        },
+{
             "id": 79,
             "title": "AI 额度突然见底？缓存命中差 50 倍，先改这 5 个习惯",
             "category": "提效指南",
@@ -1216,6 +1232,22 @@ const posts = [
 <script>
 (function() {
     const allPosts = [
+{
+            "id": 80,
+            "title": "12 月 1 日 Gemini 账单翻倍：3 天窗口期，先改这 5 处",
+            "category": "AI 资讯",
+            "date": "2026-11-28",
+            "excerpt": "Gemini 4 Carbon 和 Argon 的 API 单价 12 月 1 日整倍上涨：输入 $2→$4、输出 $10→$20；同一天 2.5 系列请求被自动转走，function calling 还会变。token 囤不了，但能把活跑完、把模型名改掉。",
+            "image": "",
+            "tags": [
+                "Gemini",
+                "API 定价",
+                "模型迁移",
+                "成本控制",
+                "AI 资讯"
+            ],
+            "content": "<h2>结论先行</h2>\n<p>12 月 1 日，Gemini 两条线同时动：4 Carbon 和 4 Argon 的 API 单价整倍上调，2.5 Pro / Flash 的请求被自动转去新模型。token 囤不了，能做的只有三件：把该跑的批量活提前跑完、把写死的模型名改掉、把不必要的贵模型换下去。今天到 11 月 30 日，只剩 3 天。</p>\n<h2>涨多少：每个档位都翻倍</h2>\n<p>Google 定价页把两个日期并排写着「through November 30」和「starting December 1, 2026」（Google AI Studio 定价页，2026-11-10 发布，11-19 复核）：</p>\n<ul>\n<li>Standard：输入 $2 → $4，输出 $10 → $20（含思考 token），缓存输入 $0.10 → $0.20，均按每百万 token 计。</li>\n<li>Batch / Flex：$1 / $5 → $2 / $10，仍是 Standard 的五折。</li>\n<li>Priority：$3.6 / $18 → $7.2 / $36，仍是 Standard 的 1.8 倍。</li>\n</ul>\n<p>没涨的是 Neon（$3 / $15）和 Hydrogen（$1.5 / $7.5）。这句话值钱：如果你的任务只是改写、抽取、分类，换成这两个，12 月账单可以不动。</p>\n<h2>算一笔账，再决定要不要留 Carbon</h2>\n<p>1000 个 agent 任务，每个 2 万输入、4 千输出：Standard 现在 $80，12 月 1 日变 $160；走 Batch 现在 $40，之后 $80。翻倍还不是最贵的部分——Google 自己说 Carbon 比 Argon 更费 token，默认 thinking level 是 medium，思考 token 按输出价计费。同一件事用 Carbon 跑，账单可能是标价的两三倍。</p>\n<h2>5 个动作，按截止时间排</h2>\n<ol>\n<li><strong>11 月 30 日前把批量活跑完。</strong>能走 Batch 就走 Batch，旧价再打五折，等于四分之一价。跑不完的，先跑最贵的那批。</li>\n<li><strong>全局搜 <code>gemini-4-carbon</code> 和 <code>gemini-4-argon</code>。</strong>每个调用点标「必须」或「可换」，可换的今天就换 Neon / Hydrogen，这两个 12 月不涨。</li>\n<li><strong>搜 <code>gemini-2.5</code>，12 月 1 日前测完。</strong>之后请求自动转到 Gemini 3.8 Flash 和 3.5 Flash-Lite，按新模型计价，function calling 有破坏性变更（Google AI Studio 文档，经 Hello Growth 2026-11-27 整理）。自动转不等于不用改，报错通常出在工具调用上。</li>\n<li><strong>视频项目查 <code>gemini-omni-1.1-flash</code>。</strong>12 月 3 日自动跳到 1.2，720p 每秒 $0.07、比上版便宜 30%，但输出时长和画面规格要重测。</li>\n<li><strong>把 thinking level 降一档试跑。</strong>Carbon 支持 low / medium / high，默认 medium。同一批任务用 low 跑一遍，对比质量和费用；如果质量只掉一点，12 月就别用默认档。</li>\n</ol>\n<h2>顺手能接的活</h2>\n<p>这两周会有一批套壳工具和小团队同时撞上「涨价 + 模型退役」，他们需要的不是新工具，是有人把模型名、计费口径和回归测试理一遍。先给自己做一份迁移清单，跑通一次，就是现成的样品；这类活按次收费，比按 token 转卖稳定。</p>\n<h2>今天就能做的 3 件事</h2>\n<ol>\n<li>列出你所有在跑的 Gemini 调用和模型名，标出哪些是 4 Carbon / Argon、哪些还是 2.5（10 分钟）。</li>\n<li>把 2.5 那条链路跑一遍完整回归，重点看 function calling 和 JSON 输出（20 分钟）。</li>\n<li>把本月剩下的批量任务挪到 11 月 30 日前，能 Batch 就 Batch，跑不完的按单价排序砍掉一半（15 分钟）。</li>\n</ol>\n<p><em>来源：Google AI Studio 定价页与 Gemini 4 Carbon 发布文（2026-11-10，脚注注明 11-30 后按 $4/$20 计）；Google AI Studio 文档（2.5 Pro/Flash 于 12-01 转至 3.8 Flash / 3.5 Flash-Lite，经 Hello Growth 2026-11-27 汇总）；Gemini Omni 1.2 Flash 发布文（2026-11-05，720p 每秒 $0.07）。价格随时可能调整，执行前以官方页面为准。</em></p>"
+        },
 {
             "id": 79,
             "title": "AI 额度突然见底？缓存命中差 50 倍，先改这 5 个习惯",
